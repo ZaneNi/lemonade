@@ -225,14 +225,24 @@ body::before {
   position: relative;
 }
 
+/* Wrapper for the select element with embedded status light */
+.model-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .status-light {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  position: relative;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   transition: all var(--transition-fast);
   flex-shrink: 0;
-  align-self: center;
+  z-index: 10;
 }
 
 .status-light::before {
@@ -300,7 +310,7 @@ body::before {
 
 /* Base styles for the select element */
 .model-select {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.75rem 0.5rem 1.5rem;
   border: 1px solid #ddd;
   border-radius: 6px;
   background: #fafafa;
@@ -1888,6 +1898,53 @@ button:disabled {
   align-items: center;
 }
 
+/* FastFlowLM notice styles */
+.flm-notice {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  border: 1px solid #ffeaa7;
+  border-left: 4px solid #f39c12;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(243, 156, 18, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+.flm-notice-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+}
+
+.flm-notice-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.flm-notice-text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #856404;
+}
+
+.flm-notice-text strong {
+  color: #6c5ce7;
+  font-weight: 600;
+}
+
+.flm-notice-text a {
+  color: var(--info-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.flm-notice-text a:hover {
+  text-decoration: underline;
+  color: var(--info-hover);
+}
+
 .error-banner .close-btn {
   background: none;
   border: none;
@@ -2325,4 +2382,48 @@ button:disabled {
     0 8px 25px rgba(200, 88, 108, 0.2),
     0 3px 10px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+/* Dropdown styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;              /* align to the right edge of the parent */
+    left: auto;            /* prevent left alignment */
+    top: calc(100% + 1px); /* opens 8px below the button */
+    background-color: #ffe76c;
+    border-radius: 8px;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    font-size: 12px;   /* smaller font */
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f6c146;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
